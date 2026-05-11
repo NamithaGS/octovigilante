@@ -1,0 +1,11 @@
+flask>=3.0.0
+flask-cors>=4.0.0
+anthropic>=0.40.0
+youtube-transcript-api>=0.6.2
+python-dotenv>=1.0.0
+requests>=2.31.0
+yt-dlp>=2024.1.0
+httpx>=0.27.0
+
+# System dependency: ffmpeg must be installed separately for audio transcription fallback.
+# On macOS: brew install ffmpeg

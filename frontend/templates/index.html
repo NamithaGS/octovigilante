@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HealthCheck AI — Verify Health Claims</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Background grid -->
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">⬡</span>
+        <span class="logo-text">HealthCheck<span class="logo-accent">AI</span></span>
+      </div>
+      <p class="tagline">Multi-agent health claim verification against top journals</p>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="main">
+
+    <!-- Input Section -->
+    <section class="input-section" id="inputSection">
+      <div class="input-card">
+        <h1 class="input-title">
+          Does your<br/>
+          <span class="title-accent">health video</span><br/>
+          tell the truth?
+        </h1>
+        <p class="input-subtitle">
+          Paste any YouTube health, nutrition, or medical video URL.
+          Our AI agents will extract claims and verify them against PubMed, NEJM, Lancet, WHO, and more.
+        </p>
+        <p class="input-note">Note: only short videos under 1 minute are supported.</p>
+
+        <div class="url-form">
+          <div class="url-input-wrap">
+            <span class="url-prefix-icon">▶</span>
+            <input
+              type="url"
+              id="videoUrl"
+              class="url-input"
+              placeholder="https://youtube.com/watch?v=..."
+              autocomplete="off"
+              spellcheck="false"
+            />
+          </div>
+          <button class="analyze-btn" id="analyzeBtn" onclick="startAnalysis()">
+            <span class="btn-text">Analyze</span>
+            <span class="btn-arrow">→</span>
+          </button>
+        </div>
+
+        <div class="input-meta">
+          <span class="meta-tag">YouTube</span>
+          <span class="meta-tag">Health · Nutrition · Medicine</span>
+          <span class="meta-tag">Powered by Claude AI</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Progress Section (hidden initially) -->
+    <section class="progress-section hidden" id="progressSection">
+      <div class="progress-card">
+        <div class="progress-header">
+          <div class="progress-spinner">
+            <div class="spinner-ring"></div>
+            <span class="spinner-icon">⬡</span>
+          </div>
+          <div>
+            <h2 class="progress-title">Analyzing video...</h2>
+            <p class="progress-message" id="progressMessage">Initializing agents...</p>
+          </div>
+        </div>
+
+        <div class="progress-bar-wrap">
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+          </div>
+          <span class="progress-pct" id="progressPct">0%</span>
+        </div>
+
+        <div class="agent-log" id="agentLog">
+          <!-- Live agent messages appear here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Results Section (hidden initially) -->
+    <section class="results-section hidden" id="resultsSection">
+
+      <!-- Video Overview -->
+      <div class="overview-card" id="overviewCard">
+        <!-- Populated by JS -->
+      </div>
+
+      <!-- Claims List -->
+      <div class="claims-container" id="claimsContainer">
+        <!-- Populated by JS -->
+      </div>
+
+      <!-- Analyze Another -->
+      <div class="reset-wrap">
+        <button class="reset-btn" onclick="resetApp()">← Analyze another video</button>
+      </div>
+
+    </section>
+
+    <!-- Error Section -->
+    <section class="error-section hidden" id="errorSection">
+      <div class="error-card">
+        <span class="error-icon">⚠</span>
+        <h3 class="error-title">Analysis Failed</h3>
+        <p class="error-message" id="errorMessage"></p>
+        <button class="reset-btn" onclick="resetApp()">← Try again</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>HealthCheck AI · Not medical advice · Always consult a qualified healthcare professional</p>
+  </footer>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
